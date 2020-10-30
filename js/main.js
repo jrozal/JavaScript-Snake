@@ -9,18 +9,22 @@ const gameBoard = document.getElementById('game-board');
 // function main takes in current time and renders game indefinitely
 function main(currentTime) {
   if (gameOver) {
-    return alert('Game Over');
+    if (confirm('Game over. Press ok to restart.')) {
+      window.location = '/';
+    }
+
+    return;
   }
   // request next frame to animate game
   window.requestAnimationFrame(main);
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
-  if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
+  if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
 
   // update render time
   lastRenderTime = currentTime;
 
-  update()
-  draw()
+  update();
+  draw();
 };
 
 // init game render loop
@@ -39,5 +43,5 @@ function draw() {
 };
 
 function checkDeath() {
-  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
-}
+  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection();
+};
