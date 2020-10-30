@@ -9,8 +9,8 @@ const gameBoard = document.getElementById('game-board');
 // function main takes in current time and renders game indefinitely
 function main(currentTime) {
   if (gameOver) {
-    if (confirm('Game over. Press ok to restart.')) {
-      window.location = '/';
+    if (confirm('Game over. Click OK to restart.')) {
+      window.location.reload();
     }
 
     return;
